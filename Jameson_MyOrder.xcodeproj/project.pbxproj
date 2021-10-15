@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		444033FB271926B1009E1974 /* CoffeeMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444033FA271926B1009E1974 /* CoffeeMO.swift */; };
+		444034012719284F009E1974 /* Jameson_MyOrder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 444033FF2719284F009E1974 /* Jameson_MyOrder.xcdatamodeld */; };
+		4440340527193270009E1974 /* CoreDBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4440340427193270009E1974 /* CoreDBHelper.swift */; };
+		44403407271935AF009E1974 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44403406271935AF009E1974 /* Persistence.swift */; };
 		44FB3ED827026F2800F9A351 /* Jameson_MyOrderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FB3ED727026F2800F9A351 /* Jameson_MyOrderApp.swift */; };
 		44FB3EDA27026F2800F9A351 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FB3ED927026F2800F9A351 /* ContentView.swift */; };
 		44FB3EDC27026F2900F9A351 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44FB3EDB27026F2900F9A351 /* Assets.xcassets */; };
@@ -16,6 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		444033FA271926B1009E1974 /* CoffeeMO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeMO.swift; sourceTree = "<group>"; };
+		444034002719284F009E1974 /* CoreDataCoffee.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataCoffee.xcdatamodel; sourceTree = "<group>"; };
+		4440340427193270009E1974 /* CoreDBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDBHelper.swift; sourceTree = "<group>"; };
+		44403406271935AF009E1974 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		44FB3ED427026F2800F9A351 /* Jameson_MyOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jameson_MyOrder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44FB3ED727026F2800F9A351 /* Jameson_MyOrderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jameson_MyOrderApp.swift; sourceTree = "<group>"; };
 		44FB3ED927026F2800F9A351 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -36,6 +44,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		444033F92719268C009E1974 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				44FB3F0B2707BB1200F9A351 /* Coffee.swift */,
+				444033FA271926B1009E1974 /* CoffeeMO.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		44403402271931EF009E1974 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				44FB3ED927026F2800F9A351 /* ContentView.swift */,
+				44FB3F03270659DA00F9A351 /* OrdersView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		444034032719325A009E1974 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4440340427193270009E1974 /* CoreDBHelper.swift */,
+				44403406271935AF009E1974 /* Persistence.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		44FB3ECB27026F2800F9A351 = {
 			isa = PBXGroup;
 			children = (
@@ -55,12 +90,13 @@
 		44FB3ED627026F2800F9A351 /* Jameson_MyOrder */ = {
 			isa = PBXGroup;
 			children = (
-				44FB3ED727026F2800F9A351 /* Jameson_MyOrderApp.swift */,
-				44FB3ED927026F2800F9A351 /* ContentView.swift */,
+				444034032719325A009E1974 /* Controllers */,
+				44403402271931EF009E1974 /* Views */,
+				444033F92719268C009E1974 /* Models */,
 				44FB3EDB27026F2900F9A351 /* Assets.xcassets */,
+				44FB3ED727026F2800F9A351 /* Jameson_MyOrderApp.swift */,
 				44FB3EDD27026F2900F9A351 /* Preview Content */,
-				44FB3F03270659DA00F9A351 /* OrdersView.swift */,
-				44FB3F0B2707BB1200F9A351 /* Coffee.swift */,
+				444033FF2719284F009E1974 /* Jameson_MyOrder.xcdatamodeld */,
 			);
 			path = Jameson_MyOrder;
 			sourceTree = "<group>";
@@ -143,10 +179,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				444034012719284F009E1974 /* Jameson_MyOrder.xcdatamodeld in Sources */,
+				44403407271935AF009E1974 /* Persistence.swift in Sources */,
+				4440340527193270009E1974 /* CoreDBHelper.swift in Sources */,
 				44FB3EDA27026F2800F9A351 /* ContentView.swift in Sources */,
 				44FB3ED827026F2800F9A351 /* Jameson_MyOrderApp.swift in Sources */,
 				44FB3F04270659DA00F9A351 /* OrdersView.swift in Sources */,
 				44FB3F0C2707BB1200F9A351 /* Coffee.swift in Sources */,
+				444033FB271926B1009E1974 /* CoffeeMO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,6 +391,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		444033FF2719284F009E1974 /* Jameson_MyOrder.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				444034002719284F009E1974 /* CoreDataCoffee.xcdatamodel */,
+			);
+			currentVersion = 444034002719284F009E1974 /* CoreDataCoffee.xcdatamodel */;
+			path = Jameson_MyOrder.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 44FB3ECC27026F2800F9A351 /* Project object */;
 }
