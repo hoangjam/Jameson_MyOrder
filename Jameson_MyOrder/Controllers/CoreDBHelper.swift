@@ -29,12 +29,12 @@ class CoreDBHelper : ObservableObject{
     
     func insertCoffee(newCoffee: Coffee){
         do{
-            let coffeeTobeInserted = NSEntityDescription.insertNewObject(forEntityName: self.ENTITY_NAME, into: self.MOC) as! CoffeeMO
+            let coffeeToBeInserted = NSEntityDescription.insertNewObject(forEntityName: self.ENTITY_NAME, into: self.MOC) as! CoffeeMO
             
-            coffeeTobeInserted.id = UUID()
-            coffeeTobeInserted.type = newCoffee.type
-            coffeeTobeInserted.size = newCoffee.size
-            coffeeTobeInserted.quantity = newCoffee.quantity
+            coffeeToBeInserted.id = UUID()
+            coffeeToBeInserted.type = newCoffee.type
+            coffeeToBeInserted.size = newCoffee.size
+            coffeeToBeInserted.quantity = newCoffee.quantity
             
             if self.MOC.hasChanges{
                 try self.MOC.save()
@@ -48,7 +48,7 @@ class CoreDBHelper : ObservableObject{
     
     func getAllCoffees(){
         let fetchRequest = NSFetchRequest<CoffeeMO>(entityName: self.ENTITY_NAME)
-        fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "title", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "dateAdded", ascending: false)]
         
         do{
             let result = try self.MOC.fetch(fetchRequest)

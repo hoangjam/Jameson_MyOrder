@@ -10,12 +10,13 @@ import SwiftUI
 @main
 struct Jameson_MyOrderApp: App {
 //    var coffee = Coffee()
+    let persistenceController = PersistenceController.shared
+    let coreDBHelper = CoreDBHelper(context: PersistenceController.shared.container.viewContext)
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(selectedCoffeeIndex: 0).environmentObject(coreDBHelper)
 //                .environmentObject(coffee)
-//                .environmentObject()
         }
     }
 }

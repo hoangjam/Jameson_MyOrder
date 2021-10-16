@@ -14,6 +14,7 @@ final class CoffeeMO: NSManagedObject{
     @NSManaged var type: String
     @NSManaged var size: String
     @NSManaged var quantity: String
+    @NSManaged var dateAdded: Date
 }
 
 extension CoffeeMO{

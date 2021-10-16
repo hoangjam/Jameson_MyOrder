@@ -9,30 +9,67 @@ import SwiftUI
 
 struct OrdersView: View {
     
+    @State private var type : String = ""
+    @State private var size : String = ""
+    @State private var quantity : String = ""
+    
+    @EnvironmentObject var coreDBHelper : CoreDBHelper
     
     var orders : [Coffee] = []
     
+    let types = ["Dark Roast", "Original Blend", "Vanilla", "Black"]
+    let sizes = ["Small", "Medium", "Large"]
+    
+    let selectedCoffeeIndex : Int
+    
     var body: some View {
-        Text("Coffee Orders")
-            .foregroundColor(.green)
-            .fontWeight(.bold)
-            .font(.system(size: 40))
-            .padding()
-        VStack{
-            List{
-                ForEach(orders, id: \.id){ coffee in
-                    Section(header: Text("Order #\(coffee.id)")){
-                        Text("Coffee Type: \(coffee.type)\nSize: \(coffee.size)\nQuantity: \(coffee.quantity)")
-                    }
-                }
+        //        Text("Coffee Orders")
+        //            .foregroundColor(.green)
+        //            .fontWeight(.bold)
+        //            .font(.system(size: 40))
+        //            .padding()
+        ZStack(alignment: .bottom){
+            if (self.coreDBHelper.orders.count > 0){
+                List{
+                    ForEach (self.coreDBHelper.orders.enumerated().map({$0}), id: \.element.self){ i, currentCoffee in
+                        NavigationLink(destination: ContentView(selectedCoffeeIndex: i)){
+                            VStack(alignment: .leading){
+                                Text("Coffee Type: \(currentCoffee.type)")
+                                Text("Coffee Size: \(currentCoffee.size)")
+                                Text("Quantity: \(currentCoffee.quantity)")
+                            }.padding(20)
+                                .onTapGesture {
+                                    print("\(self.coreDBHelper.orders[i].id) selected")
+                                }
+                        }//NavigationLink
+                    }//ForEach
+                    .onDelete(perform: {indexSet in
+                        for index in indexSet{
+                            self.coreDBHelper.deleteCoffee(coffeeID: self.coreDBHelper.orders[index].id!)
+                            self.coreDBHelper.orders.remove(atOffsets: indexSet)
+                        }
+                    })
+                }//List
             }
+        }//EOZstack
+        .onAppear(){
+            self.coreDBHelper.getAllCoffees()
         }
-    }
+    }//EObody
     
+    //}// EO ZStack
+    //    private func updateCoffee(){
+    //        self.coreDBHelper.orders[selectedCoffeeIndex].type = self.type
+    //        self.coreDBHelper.orders[selectedCoffeeIndex].size = self.size
+    //        self.coreDBHelper.orders[selectedCoffeeIndex].quantity = self.quantity
+    //
+    //        self.coreDBHelper.updateCoffee(updatedCoffee: self.coreDBHelper.orders[selectedCoffeeIndex])
+    //    }
     
-    struct OrdersView_Previews: PreviewProvider {
-        static var previews: some View {
-            OrdersView()
-        }
-    }
+    //    struct OrdersView_Previews: PreviewProvider {
+    //        static var previews: some View {
+    //            OrdersView()
+    //        }
+    //    }
+    //}
 }
