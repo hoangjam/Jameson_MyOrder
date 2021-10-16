@@ -23,11 +23,11 @@ struct OrdersView: View {
     let selectedCoffeeIndex : Int
     
     var body: some View {
-        //        Text("Coffee Orders")
-        //            .foregroundColor(.green)
-        //            .fontWeight(.bold)
-        //            .font(.system(size: 40))
-        //            .padding()
+        Text("Coffee Orders")
+            .foregroundColor(.green)
+            .fontWeight(.bold)
+            .font(.system(size: 30))
+            .padding()
         ZStack(alignment: .bottom){
             if (self.coreDBHelper.orders.count > 0){
                 List{
@@ -37,9 +37,10 @@ struct OrdersView: View {
                                 Text("Coffee Type: \(currentCoffee.type)")
                                 Text("Coffee Size: \(currentCoffee.size)")
                                 Text("Quantity: \(currentCoffee.quantity)")
-                            }.padding(20)
+                            }.padding(15)
                                 .onTapGesture {
-                                    print("\(self.coreDBHelper.orders[i].id) selected")
+                                    print("Current coffee order selected: \(self.coreDBHelper.orders[i].id)")
+                                    
                                 }
                         }//NavigationLink
                     }//ForEach
@@ -51,20 +52,25 @@ struct OrdersView: View {
                     })
                 }//List
             }
+            else{
+                VStack{
+                    Text("No orders placed yet")
+                    Spacer()
+                }
+            }
         }//EOZstack
         .onAppear(){
             self.coreDBHelper.getAllCoffees()
         }
     }//EObody
     
-    //}// EO ZStack
-    //    private func updateCoffee(){
-    //        self.coreDBHelper.orders[selectedCoffeeIndex].type = self.type
-    //        self.coreDBHelper.orders[selectedCoffeeIndex].size = self.size
-    //        self.coreDBHelper.orders[selectedCoffeeIndex].quantity = self.quantity
-    //
-    //        self.coreDBHelper.updateCoffee(updatedCoffee: self.coreDBHelper.orders[selectedCoffeeIndex])
-    //    }
+    private func updateCoffee(){
+        self.coreDBHelper.orders[selectedCoffeeIndex].type = self.type
+        self.coreDBHelper.orders[selectedCoffeeIndex].size = self.size
+        self.coreDBHelper.orders[selectedCoffeeIndex].quantity = self.quantity
+        
+        self.coreDBHelper.updateCoffee(updatedCoffee: self.coreDBHelper.orders[selectedCoffeeIndex])
+    }
     
     //    struct OrdersView_Previews: PreviewProvider {
     //        static var previews: some View {
